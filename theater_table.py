@@ -75,7 +75,7 @@ def edit():
     theater_name_edit.grid(row=1, column=1, padx=20)
 
     theater_seatCapacity_edit = Entry(editor, width=30)
-    theater_seatCapacity_edit.grid(row=3, column=1)
+    theater_seatCapacity_edit.grid(row=2, column=1)
 
     # creating labels for the text boxes ~~~~~~~~~~~~~~~
     theater_id_label = Label(editor, text="Theater ID")
@@ -85,7 +85,7 @@ def edit():
     theater_name_label.grid(row=1, column=0)
 
     theater_seatCapacity_label = Label(editor, text="Seat Capacity")
-    theater_seatCapacity_label.grid(row=3, column=0)
+    theater_seatCapacity_label.grid(row=2, column=0)
 
     # go through our record data and update them by looping
     for record in theater_records:
@@ -122,7 +122,7 @@ def submit():
 
     # insert data into the theater_info table
     c.execute(
-        "INSERT INTO THEATER VALUES (:theater_id, :theater_name, :theater_screen, :theater_seatCapacity)",
+        "INSERT INTO THEATER VALUES (:theater_id, :theater_name, :theater_seatCapacity)",
         {
             'theater_id': theater_id.get(),
             'theater_name': theater_name.get(),
