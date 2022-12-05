@@ -58,9 +58,23 @@ conn.execute("INSERT INTO HISTORY (HISTORY_NUM, USER_ID, MOVIE_ID, TICKET_NUM) \
 VALUES (1111, 1, 1, 123)");
 
 """
+'''
+query = ("""CREATE TABLE IF NOT EXISTS USER_INFO (
+        USER_ID integer primary key,
+        USER_FNAME text,
+        USER_LNAME text,
+        USER_PHONE integer,
+        USER_EMAIL varchar,
+        USER_AGE integer,
+        USER_PAY integer, 
+        USER_HIST money,
+        USER_PASS varchar
+        )""")
+conn.execute(query)
+'''
 
 # commit changes
-conn.commit()
+#conn.commit()
 
 # close connection
 conn.close()

@@ -24,7 +24,8 @@ c.execute("""CREATE TABLE IF NOT EXISTS USER_INFO (
         USER_EMAIL varchar,
         USER_AGE integer,
         USER_PAY integer, 
-        USER_HIST money
+        USER_HIST money,
+        USER_PASS varchar
         )""")
 '''
 
@@ -42,7 +43,8 @@ def update():
         USER_EMAIL = :EMAIL,
         USER_AGE = :AGE,
         USER_PAY = :PAY, 
-        USER_HIST = :HIST
+        USER_HIST = :HIST,
+        USER_PASS = :PASS
 
         WHERE USER_ID = :SELECTED_ID""",
               {
@@ -54,6 +56,7 @@ def update():
                   'AGE': age_edit.get(),
                   'PAY': pay_edit.get(),
                   'HIST': history_edit.get(),
+                  'PASS': password_edit.get(),
                   'SELECTED_ID': record_select_id
               })
 
@@ -88,6 +91,7 @@ def edit():
     global age_edit
     global pay_edit
     global history_edit
+    global password_edit
 
     # creating the text boxes ~~~~~~~~~~~~~~~~~~~~~
     user_id_edit = Entry(editor, width=30)
@@ -113,6 +117,9 @@ def edit():
 
     history_edit = Entry(editor, width=30)
     history_edit.grid(row=7, column=1)
+
+    password_edit = Entry(editor, width=30)
+    password_edit.grid(row=8, column=1)
 
     # creating labels for the text boxes ~~~~~~~~~~~~~~~
     user_id_label = Label(editor, text="User ID")
@@ -140,6 +147,9 @@ def edit():
     history_label = Label(editor, text="Payment History")
     history_label.grid(row=7, column=0)
 
+    password_label= Label(editor, text="Password")
+    password_label.grid(row=8, column=0)
+
     # go through our record data and update them by looping
     for record in user_records:
         user_id_edit.insert(0, record[0])
@@ -150,6 +160,7 @@ def edit():
         age_edit.insert(0, record[5])
         pay_edit.insert(0, record[6])
         history_edit.insert(0, record[7])
+        password_edit.insert(0, record[8])
 
     # creates a save button to save the edits/updates done on the user's record information
     save_button = Button(editor, text="Save User's Info Records", command=update)
@@ -180,7 +191,7 @@ def submit():
 
     # insert data into the user_info table
     c.execute(
-        "INSERT INTO USER_INFO VALUES (:user_id, :first_name, :last_name, :phone_num, :email_addr, :age, :pay, :history)",
+        "INSERT INTO USER_INFO VALUES (:user_id, :first_name, :last_name, :phone_num, :email_addr, :age, :pay, :history, :password)",
         {
             'user_id': user_id.get(),
             'first_name': first_name.get(),
@@ -189,7 +200,8 @@ def submit():
             'email_addr': email_addr.get(),
             'age': age.get(),
             'pay': pay.get(),
-            'history': history.get()
+            'history': history.get(),
+            'password': password.get()
         })
 
     conn.commit()
@@ -204,6 +216,7 @@ def submit():
     age.delete(0, END)
     pay.delete(0, END)
     history.delete(0, END)
+    password.delete(0, END)
 
 
 # create a sql query function for the query button
@@ -221,8 +234,8 @@ def query():
     # looping through all user info 'show record' query
     for record in user_records:
         print_records += str(record[0]) + "  " + str(record[1]) + "  " + str(record[2]) + "  " + str(record[3]) + "  " \
-                         + str(record[4]) + "  " + str(record[5]) + "  " + str(record[6]) + "  " + str(
-            record[7]) + " \n"
+                         + str(record[4]) + "  " + str(record[5]) + "  " + str(record[6]) + "  " + str(record[7]) + "  " \
+                         + str(record[8]) +" \n"
 
     query_label = Label(root, text=print_records)
     query_label.grid(row=11, column=0, columnspan=2)
@@ -256,6 +269,9 @@ pay.grid(row=6, column=1)
 history = Entry(root, width=30)
 history.grid(row=7, column=1)
 
+password = Entry(root, width=30)
+password.grid(row=8, column=1)
+
 delete_box = Entry(root, width=30)
 delete_box.grid(row=12, column=1, pady=5)
 
@@ -284,6 +300,9 @@ pay_label.grid(row=6, column=0)
 # TODO add the payments to history automatically
 history_label = Label(root, text="Payment History")
 history_label.grid(row=7, column=0)
+
+password_label = Label(root, text="Password")
+password_label.grid(row=8, column=0)
 
 delete_label = Label(root, text="Select User ID")
 delete_label.grid(row=12, column=0, pady=5)
