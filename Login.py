@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import messagebox
+import os
 
 
 root = tkinter.Tk()
@@ -12,6 +13,8 @@ def login():
     password = "12345"
     if username_entry.get()==username and password_entry.get()==password:
         messagebox.showinfo(title="Login Success", message="You successfully logged in.")
+        root.destroy()
+        os.system(f" python management.py")
     else:
         messagebox.showerror(title="Error", message="Invalid login.")
 

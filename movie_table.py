@@ -1,5 +1,5 @@
 from tkinter import *
-from PIL import ImageTk, Image
+
 import sqlite3
 
 root = Tk()
@@ -81,6 +81,7 @@ def update():
 # edit/updates a THEATER's info record
 def edit():
     global editor
+
     editor = Tk()
     editor.title('Edit Movie Record Info')
     editor.geometry("550x400")
