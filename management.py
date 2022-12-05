@@ -78,7 +78,7 @@ def home_page():
     mCanvas2 = tk.Canvas(current_frame, width=320, height=320, bg="#c3c3c3")
 
     mCanvas2.create_text(159, 50, text="Money Made: ", fill="black", font=('Helvetica 25 bold'))
-    mCanvas2.create_text(130, 150, text="$ ", fill="black", font=('Helvetica 20 bold'))
+    #mCanvas2.create_text(130, 150, text="$ ", fill="black", font=('Helvetica 20 bold'))
     mCanvas2.create_text(130, 160, text=r_set2, fill="black", font=('Helvetica 20 bold'))
 
 
@@ -507,6 +507,9 @@ def update():
 
 # edit/updates a THEATER's info record
 def edit1():
+    global theater_id
+    global theater_name
+    global theater_seatCapacity
     global editor
     editor = Tk()
     editor.title('Edit theater Record Info')
@@ -577,6 +580,9 @@ def delete1():
 
 # creating the submit function for the submit_button
 def submit1():
+    global theater_id
+    global theater_name
+    global theater_seatCapacity
     conn = sqlite3.connect('theater_ticketing.db')
     c = conn.cursor()
 
@@ -621,8 +627,11 @@ def query1():
     conn.close()
 
 # creating the text boxes ~~~~~~~~~~~~~~~~~~~~~
-def h2():
+def theater_page():
     global h1_frame
+    global theater_id
+    global theater_name
+    global theater_seatCapacity
     h1_frame=tk.Frame(main_frame)
     theater_id = Entry(h1_frame, width=30)
     theater_id.grid(row=0, column=1, padx=20, pady=(10, 0))
@@ -664,12 +673,12 @@ def h2():
     # create an edit button to update/edit a Theater's info record
     edit_button = Button(h1_frame, text="Edit a Theater's Info Records", command=edit1)
     edit_button.grid(row=14, column=0, columnspan=2, pady=10, padx=10, ipadx=142)
-    h2_frame.pack(pady=20)
+    h1_frame.pack(pady=20)
 
 # commit changes
-conn.commit()
+    conn.commit()
 # close connection
-conn.close()
+    conn.close()
 
 
 
@@ -690,10 +699,10 @@ add_btn.place(x=10,y=190)
 add_indicate=tk.Label(options_frame, text='', bg='#c3c3c3')
 add_indicate.place(x=3,y=190,width=5, height=40)
 
-theater_btn=tk.Button(options_frame,text="Theaters",font=('Bold',20),fg='#128aff', bd=0,bg='#c3c3c3' ,command=lambda :indicate(history_indicate,h2))
+theater_btn=tk.Button(options_frame,text="Theaters",font=('Bold',20),fg='#128aff', bd=0,bg='#c3c3c3' ,command=lambda :indicate(history_indicate,theater_page))
 theater_btn.place(x=10,y=250)
 theater_indicate=tk.Label(options_frame, text='', bg='#c3c3c3')
-theater_indicate.place(x=3,y=190,width=5, height=40)
+theater_indicate.place(x=3,y=250,width=5, height=40)
 
 exit_btn=tk.Button(options_frame,text="logout",font=('Bold',20),fg='#128aff', bd=0,bg='#c3c3c3',command=lambda :indicate(exit_indicate,exit_page))
 exit_btn.place(x=10,y=600)

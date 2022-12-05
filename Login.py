@@ -11,10 +11,17 @@ root.configure(bg='#333333')
 def login():
     username = "admin1"
     password = "12345"
+    username2="user1"
+    password1="12345"
     if username_entry.get()==username and password_entry.get()==password:
         messagebox.showinfo(title="Login Success", message="You successfully logged in.")
         root.destroy()
         os.system(f" python management.py")
+
+    if username_entry.get()==username2 and password_entry.get()==password1:
+        messagebox.showinfo(title="Login Success", message="You successfully logged in.")
+        root.destroy()
+        os.system(f" python user_info_table.py")
     else:
         messagebox.showerror(title="Error", message="Invalid login.")
 
