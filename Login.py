@@ -5,7 +5,7 @@ import os
 
 root = tkinter.Tk()
 root.title("Login form")
-root.geometry('1000x1200')
+root.geometry('1990x1200')
 root.configure(bg='#333333')
 
 def login():
