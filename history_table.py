@@ -11,7 +11,7 @@ root.geometry("500x600")
 conn = sqlite3.connect('theater_ticketing.db')
 
 # cursor creation
-#c = conn.cursor()
+c = conn.cursor()
 
 # creating table for Theater info ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -73,8 +73,17 @@ query = ("""CREATE TABLE IF NOT EXISTS USER_INFO (
 conn.execute(query)
 '''
 
+
+# conn.execute("SELECT movie_title FROM movie WHERE movie_id = '156'");
+
+
+
+
+
+
+
 # commit changes
-#conn.commit()
+conn.commit()
 
 # close connection
 conn.close()
