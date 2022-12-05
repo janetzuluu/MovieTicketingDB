@@ -15,7 +15,7 @@ c = conn.cursor()
 
 # creating table for Theater info ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
-c.execute("""CREATE TABLE THEATER (
+c.execute("""CREATE TABLE IF NOT EXISTS THEATER (
         THEATER_ID integer primary key,
         THEATER_NAME text,
         THEATER_SEATCAPACITY integer

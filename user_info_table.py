@@ -16,7 +16,7 @@ c = conn.cursor()
 
 # creating table for user info ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
-c.execute("""CREATE TABLE USER_INFO (
+c.execute("""CREATE TABLE IF NOT EXISTS USER_INFO (
         USER_ID integer primary key,
         USER_FNAME text,
         USER_LNAME text,

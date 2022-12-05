@@ -14,31 +14,9 @@ conn = sqlite3.connect('theater_ticketing.db')
 #c = conn.cursor()
 
 # creating table for Theater info ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
-query = (''' CREATE TABLE IF NOT EXISTS MOVIE
-            (MOVIE_ID INTEGER PRIMARY KEY,
-            MOVIE_TITLE TEXT,
-            MOVIE_SCREEN INTEGER,
-            MOVIE_DATE TEXT,
-            MOVIE_START INTEGER,
-            MOVIE_END INTEGER,
-            MOVIE_RATING INTEGER,
-            MOVIE_PRICE MONEY,
-            THEAT_ID INTEGER NOT NULL,
-            FOREIGN KEY (THEAT_ID) REFERENCES THEATER(THEATER_ID)
-            );''')
-conn.execute(query)
 
 
-conn.execute("PRAGMA foreign_keys = ON")
-
-conn.execute("INSERT INTO THEATER (THEATER_ID,THEATER_NAME,THEATER_SEATCAPACITY) \
-VALUES (2, 'Test Cinema', 34)");
-
-conn.execute("INSERT INTO MOVIE (MOVIE_ID, MOVIE_TITLE, MOVIE_SCREEN, MOVIE_DATE, MOVIE_START, MOVIE_END, MOVIE_RATING, MOVIE_PRICE, THEAT_ID) \
-VALUES (1, 'TEST MOVIE', 2, 'OCT 12 22', 1200, 1400, 7, 12.99, 2)");
-
-
+""" 
 
 query = (''' CREATE TABLE IF NOT EXISTS TICKET
             (TICKET_NUM INTEGER primary key,
