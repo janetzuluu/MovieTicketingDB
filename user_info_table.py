@@ -4,7 +4,7 @@ import sqlite3
 
 root = Tk()
 root.title('Theater E-Ticket Info')
-root.geometry("1690x1200")
+root.geometry("1690x900")
 
 # database------------------
 
