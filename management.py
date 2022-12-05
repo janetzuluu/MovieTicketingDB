@@ -6,7 +6,7 @@ from tkinter import Entry
 
 root2 = tk.Tk()
 root2.title("Management")
-root2.geometry('1000x1200')
+root2.geometry('1900x1200')
 
 # database------------------
 
@@ -133,23 +133,34 @@ def history_page():
   #  c.execute("SELECT * FROM USER_INFO")
     r_set = c.execute("SELECT * FROM MOVIE")
     i = 0
-    e = tk.Label(history_frame, width=10, text='user_id', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e = tk.Label(history_frame, width=16, text='Movie ID', borderwidth=2, relief='ridge', anchor='w', bg='white')
     e.grid(row=0, column=0)
-    e = tk.Label(history_frame, width=10, text='Movie Title', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e = tk.Label(history_frame, width=15, text='Movie Title', borderwidth=2, relief='ridge', anchor='w', bg='white')
     e.grid(row=0, column=1)
-    e = tk.Label(history_frame, width=10, text='Movie Date', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e = tk.Label(history_frame, width=15, text='Movie Screen', borderwidth=2, relief='ridge', anchor='w', bg='white')
     e.grid(row=0, column=2)
-    e = tk.Label(history_frame, width=10, text='Movie_price', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e = tk.Label(history_frame, width=15, text='Movie Date', borderwidth=2, relief='ridge', anchor='w', bg='white')
     e.grid(row=0, column=3)
-    e = tk.Label(history_frame, width=10, text='Conf number', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e = tk.Label(history_frame, width=15, text='Movie Start', borderwidth=2, relief='ridge', anchor='w', bg='white')
     e.grid(row=0, column=4)
+    e = tk.Label(history_frame, width=15, text='Movie End', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e.grid(row=0, column=5)
+    e = tk.Label(history_frame, width=15, text='Movie Rating', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e.grid(row=0, column=6)
+    e = tk.Label(history_frame, width=15, text='Movie Price', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e.grid(row=0, column=7)
+    e = tk.Label(history_frame, width=15, text='Theater ID', borderwidth=2, relief='ridge', anchor='w', bg='white')
+    e.grid(row=0, column=8)
+
+
     i = 1
     for USERS in r_set:
         for j in range(len(USERS)):
 
-            e = tk.Entry(history_frame, width=10, fg='blue')
+            e = tk.Entry(history_frame, width=18, fg='blue')
             e.grid(row=i, column=j)
             e.insert(END, USERS[j])
+
         i = i + 1
 
     history_frame.pack(pady=20)
@@ -717,5 +728,5 @@ options_frame.configure(width=160, height=1200)
 main_frame=tk.Frame(root2,highlightbackground="black",highlightthickness=2)
 main_frame.pack(side=tk.LEFT)
 main_frame.pack_propagate(False)
-main_frame.configure(height=1000,width=1200)
+main_frame.configure(height=1900,width=1200)
 root2.mainloop()
