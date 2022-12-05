@@ -78,7 +78,7 @@ def home_page():
     mCanvas2 = tk.Canvas(current_frame, width=320, height=320, bg="#c3c3c3")
 
     mCanvas2.create_text(159, 50, text="Money Made: ", fill="black", font=('Helvetica 25 bold'))
-    mCanvas2.create_text(130, 150, text="$ ", fill="black", font=('Helvetica 20 bold'))
+    #mCanvas2.create_text(130, 150, text="$ ", fill="black", font=('Helvetica 20 bold'))
     mCanvas2.create_text(130, 160, text=r_set2, fill="black", font=('Helvetica 20 bold'))
 
 
